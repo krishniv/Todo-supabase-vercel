@@ -1,14 +1,11 @@
-// app/signin/page.tsx
-
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
-// import { signin } from "@/actions/auth/actions";
+import { signup } from "@/actions/auth/actions";
 
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import {
   CardHeader,
   CardContent,
@@ -16,7 +13,7 @@ import {
   Card,
 } from "@/components/ui/card";
 
-export default async function SignInPage() {
+export default async function SignUpPage() {
   const supabase = await createClient();
   const { data } = await supabase.auth.getUser();
 
@@ -29,13 +26,13 @@ export default async function SignInPage() {
       <Card className="w-full max-w-md">
         <CardHeader>
           <div className="flex flex-col items-center space-y-2">
-            <h1 className="text-3xl font-bold">Welcome</h1>
+            <h1 className="text-3xl font-bold">Sign Up</h1>
             <p className="text-gray-500 dark:text-gray-400">
-              Enter your email below to login to your account
+              Enter your email below to create a new account.
             </p>
           </div>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent>
           <form className="space-y-6">
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
@@ -51,18 +48,12 @@ export default async function SignInPage() {
               <Label htmlFor="password">Password</Label>
               <Input id="password" name="password" required type="password" />
             </div>
-            <Button className="w-full">Sign in</Button>
+            <Button className="w-full">Sign Up</Button>
           </form>
-          <Separator />
-          <div className="space-y-4">
-            <Button className="w-full" variant="outline">
-              Sign in with Google
-            </Button>
-          </div>
         </CardContent>
         <CardFooter className="flex flex-col space-y-2">
-          <Link className="text-sm underline" href="/signup">
-            Don&apos;t have an account? Sign up here
+          <Link className="text-sm underline" href="/signin">
+            Already have an account? Sign In
           </Link>
         </CardFooter>
       </Card>
