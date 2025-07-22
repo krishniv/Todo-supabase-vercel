@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
-// import { signin } from "@/actions/auth/actions";
+import { signin } from "@/actions/auth/actions";
 
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -55,7 +55,7 @@ export default async function SignInPage() {
           </form>
           <Separator />
           <div className="space-y-4">
-            <Button className="w-full" variant="outline">
+            <Button formAction={signin} className="w-full" variant="outline">
               Sign in with Google
             </Button>
           </div>

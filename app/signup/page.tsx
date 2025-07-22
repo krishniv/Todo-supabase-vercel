@@ -48,7 +48,7 @@ export default async function SignUpPage() {
               <Label htmlFor="password">Password</Label>
               <Input id="password" name="password" required type="password" />
             </div>
-            <Button className="w-full">Sign Up</Button>
+            <Button formAction={signup} className="w-full">Sign Up</Button>
           </form>
         </CardContent>
         <CardFooter className="flex flex-col space-y-2">
